@@ -1,0 +1,9 @@
+.game-title {
+  font-family: PressStart;
+  font-size: 70px;
+  justify-content: center;
+  flex-direction: row;
+  /* font-weight: lighter; */
+  margin-top: 25%;
+  margin-bottom: 25%;
+}
