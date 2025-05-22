@@ -1,1 +1,9 @@
-<p>choose-ships works!</p>
+<div class="container">
+    <div class="tabuleiro">
+      <div *ngFor="let linha of tabuleiro; let x = index" class="linha">
+        <div *ngFor="let celula of linha; let y = index" 
+             class="celula">
+        </div>
+      </div>
+    </div>
+</div>

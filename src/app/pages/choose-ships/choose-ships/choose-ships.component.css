@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tabuleiro {
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  grid-template-rows: repeat(10, 40px);
+  gap: 2px;
+}
+
+.celula {
+  width: 40px;
+  height: 40px;
+  background-color: lightblue;
+  border: 1px solid beige;
+}
+
+.celula.navio {
+  background-color: navy;
+}
+
+.celula.atingido {
+  background-color: red;
+}
+
+.celula.vazio {
+  background-color: lightblue;
+}
+
+.coluna {
+  text-align: center;
+  font-weight: bold;
+}
+
+.numero-linha {
+  text-align: center;
+  font-weight: bold;
+  background-color: lightgray;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
