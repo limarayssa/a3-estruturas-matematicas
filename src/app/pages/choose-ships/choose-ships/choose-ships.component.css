@@ -2,45 +2,43 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 }
 
 .tabuleiro {
   display: grid;
-  grid-template-columns: repeat(10, 40px);
-  grid-template-rows: repeat(10, 40px);
-  gap: 2px;
+  grid-template-columns: repeat(
+    11,
+    40px
+  ); /* 1 coluna para números + 10 para tabuleiro */
+  grid-auto-rows: 40px;
+  gap: 1px;
+  /* background-color: #333; */
 }
 
 .celula {
   width: 40px;
   height: 40px;
-  background-color: lightblue;
-  border: 1px solid beige;
-}
-
-.celula.navio {
-  background-color: navy;
-}
-
-.celula.atingido {
-  background-color: red;
-}
-
-.celula.vazio {
-  background-color: lightblue;
-}
-
-.coluna {
-  text-align: center;
-  font-weight: bold;
-}
-
-.numero-linha {
-  text-align: center;
-  font-weight: bold;
-  background-color: lightgray;
-  height: 30px;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.celula:hover {
+  position: relative;
+  background-color: lightblue;
+}
+
+.cabecalho {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.espaco-vazio {
+  background-color: transparent;
+  border: none;
 }
