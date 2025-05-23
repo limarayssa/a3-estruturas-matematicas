@@ -12,10 +12,17 @@
       <div class="celula cabecalho">{{ x + 1 }}</div>
 
       <!-- Células da linha -->
-      <div *ngFor="let celula of linha; let y = index" 
-           class="celula"
-           (click)="onCellClick(x, y)">
-      </div>
+      <div
+        *ngFor="let celula of linha; let y = index"
+        class="celula"
+        [ngClass]="{ navio: celula === 'navio' }"
+        (click)="selecionarNavio(x, y)"
+      ></div>
     </ng-container>
   </div>
 </div>
+<div class="botoes">
+  <button (click)="clear()" style="background-color: #d83434;">Limpar tudo</button>
+  <button style="background-color: #38667f;">Começar!</button>
+</div>
+
