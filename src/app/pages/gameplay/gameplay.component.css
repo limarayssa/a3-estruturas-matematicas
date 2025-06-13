@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  background-color: antiquewhite;
+}
+
+.tabuleiro {
+  display: grid;
+  grid-template-columns: repeat(
+    11,
+    40px
+  ); /* 1 coluna para números + 10 para tabuleiro */
+  grid-auto-rows: 40px;
+  gap: 1px;
+  /* background-color: #333; */
+}
+
+.celula {
+  width: 40px;
+  height: 40px;
+  background-color: vermelho;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.celula:hover {
+  position: relative;
+  background-color: lightblue;
+}
+
+.cabecalho {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.espaco-vazio {
+  background-color: transparent;
+  border: none;
+}
+
+.navio {
+  /* background-image: url("/src/app/assets/images/navio.svg"); */
+  background-color: lightblue;
+  width: 100%;
+  height: 100%;
+}
+
+.botoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* css dos botoes */
+.title {
+  background: #2e2e2e;
+  padding: 15px;
+  color: #fff;
+  margin-bottom: 30px;
+  font-family: PressStart;
+  font-size: 24px;
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black,
+    0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038,
+    inset 0px 5px #ffffff1f, inset 0px -5px #00000030;
+}
+button {
+  color: #fff;
+  background-color: #6abc3a;
+  padding: 15px 40px 15px 40px;
+  margin: 10px;
+  font-size: 14px;
+  font-family: PressStart;
+  border: 0;
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black,
+    0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038,
+    inset 0px 5px #ffffff36;
+  cursor: pointer;
+}
+button:active {
+  transform: translateY(5px);
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black,
+    inset 0px 5px #00000038;
+}

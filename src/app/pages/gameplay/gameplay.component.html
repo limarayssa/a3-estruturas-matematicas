@@ -1,13 +1,13 @@
 <div class="container">
+ui
   <div class="tabuleiro">
     <!--espaço vazio + letras A-J -->
     <div class="celula cabecalho espaco-vazio"></div>
     <div *ngFor="let letra of colunas" class="celula cabecalho">
       {{ letra }}
     </div>
-
-    <!-- tabuleiro -->
-    <ng-container *ngFor="let linha of tabuleiro; let x = index">
+    <!-- Corpo do tabuleiro -->
+    <ng-container *ngFor="let linha of playerTabuleiro; let x = index">
       <!-- Número da linha -->
       <div class="celula cabecalho">{{ x + 1 }}</div>
 
@@ -16,12 +16,7 @@
         *ngFor="let celula of linha; let y = index"
         class="celula"
         [ngClass]="{ navio: celula === 'navio' }"
-        (click)="selecionarNavio(x, y)"
       ></div>
     </ng-container>
   </div>
-</div>
-<div class="botoes">
-  <button (click)="clear()" style="background-color: #d83434;">Limpar tudo</button>
-  <button *ngIf="this.navio.length == this.maxNavios" (click)="comecar(this.tabuleiro)" style="background-color: #38667f;">Começar!</button>
 </div>

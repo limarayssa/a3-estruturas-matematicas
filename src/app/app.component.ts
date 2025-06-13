@@ -7,7 +7,7 @@ import { ChooseShipsComponent } from "./pages/choose-ships/choose-ships/choose-s
 
 @Component({
   selector: 'app-root',
-  imports: [InitialPageComponent, HeaderComponent, FooterComponent, ChooseShipsComponent],
+  imports: [ HeaderComponent, FooterComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
