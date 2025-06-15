@@ -6,7 +6,7 @@ import { InitialPageComponent } from './pages/initial-page/initial-page.componen
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'pages/choose-ships',
+        redirectTo: 'pages/home',
         pathMatch: 'full'
     },
     {

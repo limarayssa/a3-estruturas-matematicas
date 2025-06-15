@@ -1,22 +1,64 @@
 <div class="container">
-ui
-  <div class="tabuleiro">
-    <!--espaço vazio + letras A-J -->
-    <div class="celula cabecalho espaco-vazio"></div>
-    <div *ngFor="let letra of colunas" class="celula cabecalho">
-      {{ letra }}
-    </div>
-    <!-- Corpo do tabuleiro -->
-    <ng-container *ngFor="let linha of playerTabuleiro; let x = index">
-      <!-- Número da linha -->
-      <div class="celula cabecalho">{{ x + 1 }}</div>
+  <div class="content">
+    <!-- Lado do Tabuleiro -->
+    <div class="tabuleiro">
+      <!-- espaço vazio + letras A-J -->
+      <div class="celula cabecalho espaco-vazio"></div>
+      <div *ngFor="let letra of colunas" class="celula cabecalho">
+        {{ letra }}
+      </div>
 
-      <!-- Células da linha -->
-      <div
-        *ngFor="let celula of linha; let y = index"
-        class="celula"
-        [ngClass]="{ navio: celula === 'navio' }"
-      ></div>
-    </ng-container>
+      <!-- tabuleiro -->
+      <ng-container *ngFor="let linha of playerTabuleiro; let x = index">
+        <!-- numero da linha -->
+        <div class="celula cabecalho">{{ x + 1 }}</div>
+        <div
+          *ngFor="let celula of linha; let y = index"
+          class="celula"
+          [ngClass]="{ navio: celula === 'navio' }"
+        ></div>
+      </ng-container>
+    </div>
+
+    <!-- formato de chat para digitar cordenada -->
+    <div class="chat">
+      <div class="chat-box">
+        <div class="chat-header">
+          <br />
+          <span>Bem-vindo ao chat!</span>
+        </div>
+        <!-- mensagem do jogador com coordenada -->
+        <div class="z">
+          <p style="background-color: lightblue">{{ coordenadaPlayer }}</p>
+        </div>
+        <!-- mensagem do pc -->
+        <div class="chat-message-pc">
+          <p style="background-color: #f94f6d">{{ mensagemPC }}</p>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input [ngModel]="coordenadaPlayer" type="text" maxlength="3" placeholder="Envie a cordenada" />
+        <button>Retaliar!</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="placar">
+    <div class="fundo">
+      <div class="row">
+        <div class="col col-heading">
+          <h1>VOCÊ</h1>
+        </div>
+        <div class="col col-display" id="placarJogador">
+          {{ placarJogador }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-heading">
+          <h1>BOT</h1>
+        </div>
+        <div class="col col-display" id="placarPC">{{ placarPC }}</div>
+      </div>
+    </div>
   </div>
 </div>

@@ -21,7 +21,6 @@ export class ChooseShipsComponent {
   maxNavios = 10;
 
   selecionarNavio(x: number, y: number) {
-    //alert(`Campo escolhido: ${this.colunas[y]}${x + 1}`);
     const posicao = `${this.colunas[y]}${x + 1}`;
     const isSelected = this.navio.includes(posicao);
 
@@ -51,7 +50,8 @@ export class ChooseShipsComponent {
 
   comecar(playerTabuleiro: string[][]) {
     playerTabuleiro = this.tabuleiro;
-    localStorage.setItem('tabuleiro', JSON.stringify(playerTabuleiro));
+    localStorage.setItem('tabuleiro', JSON.stringify(playerTabuleiro))
+    localStorage.setItem('navio', JSON.stringify(this.navio));
     this.router.navigate(['pages/gameplay'], {
        state: { tabuleiro: playerTabuleiro }
     });

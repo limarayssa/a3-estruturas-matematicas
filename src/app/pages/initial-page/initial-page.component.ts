@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-initial-page',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './initial-page.component.css'
 })
 export class InitialPageComponent {
+  constructor(private router: Router){}
 
+  iniciar () {
+    this.router.navigate(['pages/choose-ships'])
+  }
 }
