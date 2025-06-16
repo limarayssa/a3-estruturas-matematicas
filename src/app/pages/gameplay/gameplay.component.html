@@ -15,7 +15,10 @@
         <div
           *ngFor="let celula of linha; let y = index"
           class="celula"
-          [ngClass]="{ navio: celula === 'navio' }"
+          [ngClass]="{
+            navio: celula === 'navio',
+            acertado: celula === 'acertado'
+          }"
         ></div>
       </ng-container>
     </div>
@@ -28,17 +31,34 @@
           <span>Bem-vindo ao chat!</span>
         </div>
         <!-- mensagem do jogador com coordenada -->
-        <div class="chat-message-player">
+        <div *ngIf="coordenadaPlayer" class="chat-message-player">
           <p style="background-color: lightblue">{{ coordenadaPlayer }}</p>
         </div>
-        <!-- mensagem do pc -->
-        <div class="chat-message-pc">
-          <p style="background-color: #f94f6d">{{ mensagemPC }}</p>
+        <!-- mensagem do pc se acertou ou nao -->
+        <div *ngIf="mensagemBot" class="chat-message-pc">
+          <p style="background-color: #f94f6d">{{ mensagemBot }}</p>
+        </div>
+        <!-- mensagem com coordenada pc -->
+        <div *ngIf="coordenadaBot" class="chat-message-pc">
+          <p style="background-color: #f94f6d">{{ coordenadaBot }}</p>
+        </div>
+        <!-- mensagem pós ataque pc -->
+        <div *ngIf="mensagemPlayer" class="chat-response-pc">
+          <p style="background-color: lightgrey">{{ mensagemPlayer }}</p>
         </div>
       </div>
       <div class="chat-input">
-        <input [ngModel]="coordenadaPlayer" type="text" maxlength="3" placeholder="Envie a cordenada" />
-        <button>Retaliar!</button>
+        <input
+          [(ngModel)]="coordenadaPlayer"
+          (ngModelChange)="limparMensagens()"
+          type="text"
+          maxlength="3"
+          placeholder="Envie a cordenada"
+          (keydown.enter)="atacarNavios()"
+        />
+        <button (click)="atacarNavios()" style="background-color: #ead624">
+          Retaliar!
+        </button>
       </div>
     </div>
   </div>
@@ -57,7 +77,7 @@
         <div class="col col-heading">
           <h1>BOT</h1>
         </div>
-        <div class="col col-display" id="placarPC">{{ placarPC }}</div>
+        <div class="col col-display" id="placarPC">{{ placarBot }}</div>
       </div>
     </div>
   </div>
