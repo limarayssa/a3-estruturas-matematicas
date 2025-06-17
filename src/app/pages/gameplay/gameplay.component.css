@@ -186,7 +186,7 @@ button {
 }
 
 button {
-  cursor: pointer;
+cursor: pointer;
 }
 
 button:active {

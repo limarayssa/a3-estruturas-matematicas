@@ -54,9 +54,10 @@
           type="text"
           maxlength="3"
           placeholder="Envie a cordenada"
+          [disabled]="final"
           (keydown.enter)="atacarNavios()"
         />
-        <button (click)="atacarNavios()" style="background-color: #ead624">
+        <button [disabled]="final" (click)="atacarNavios()" style="background-color: #ead624">
           Retaliar!
         </button>
       </div>

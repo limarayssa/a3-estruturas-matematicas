@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { Router } from '@angular/router';
+import confetti from 'canvas-confetti';
 
 @Component({
   selector: 'app-gameplay',
@@ -10,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './gameplay.component.css',
 })
 export class GameplayComponent {
-  constructor() {}
+  constructor(private router: Router) {}
 
   playerTabuleiro: string[][] = Array(10)
     .fill(null)
@@ -28,6 +29,7 @@ export class GameplayComponent {
   mensagemBot: string = '';
   coordenadaBot: string = '';
   mensagemPlayer: string = '';
+  final = false;
 
   navioJogador: string[] = [];
   navioPC: string[] = [];
@@ -76,9 +78,7 @@ export class GameplayComponent {
   }
 
   atacarNavios() {
-    this.mensagemBot = '';
-    this.coordenadaBot = '';
-    this.mensagemPlayer = '';
+    this.limparMensagens();
 
     const letra = this.coordenadaPlayer.charAt(0).toUpperCase();
     const numero = parseInt(this.coordenadaPlayer.slice(1)) - 1;
@@ -95,7 +95,7 @@ export class GameplayComponent {
     if (this.tabuleiroMaquina[x][y] === 'navio') {
       this.mensagemBot = 'Acertou :(';
       this.tabuleiroMaquina[x][y] = 'acertado';
-      this.placarJogador++;
+      this.somarPontos('player');
       setTimeout(() => this.ataquePC(), 1000);
     } else if (this.tabuleiroMaquina[x][y] === 'acertado') {
       this.mensagemBot = 'Você já atacou aqui!';
@@ -105,9 +105,9 @@ export class GameplayComponent {
       setTimeout(() => this.ataquePC(), 1000);
     }
 
-    // limpa o campo digitado
     this.coordenadaPlayer = '';
   }
+
   ataquePC() {
     this.geraCoordenadas();
     let posicao = `${this.colunas[this.y]}${this.x + 1}`;
@@ -117,7 +117,7 @@ export class GameplayComponent {
       setTimeout(() => {
         this.mensagemPlayer = 'Bot acertou :( Sua vez!';
         this.playerTabuleiro[this.x][this.y] = 'acertado'; // marca que já foi atacado
-        this.placarBot++;
+        this.somarPontos('bot');
       }, 1000);
     } else if (this.playerTabuleiro[this.x][this.y] === 'acertado') {
       setTimeout(() => {
@@ -136,4 +136,40 @@ export class GameplayComponent {
     this.mensagemPlayer = '';
   }
 
+  somarPontos(jogador: string) {
+    if (jogador == 'player') {
+      this.placarJogador++;
+      if (this.placarJogador == 10) {
+        this.finalJogo();
+      }
+    } else if (jogador == 'bot') {
+      this.placarBot++;
+      if (this.placarBot == 10) {
+        this.finalJogo();
+      }
+    }
+  }
+
+  celebrate() {
+    const duration = 10000;
+    confetti({
+      particleCount: 500,
+      spread: 200,
+      origin: { y: 0.5 },
+      colors: ['#FF4500', '#008080', '#FFD700'],
+    });
+    setTimeout(() => confetti.reset(), duration);
+  }
+
+  finalJogo() {
+    this.final = true;
+    if (this.placarJogador == 10) {
+      this.mensagemPlayer = 'Ganhamos :)))';
+    } else if (this.placarBot == 10) {
+      this.mensagemPlayer = 'Perdemos';
+    }
+    this.celebrate();
+    setTimeout(() => this.celebrate(), 1000);
+    setTimeout(() => this.router.navigate(['pages/final']), 1000);
+  }
 }
