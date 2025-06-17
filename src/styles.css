@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
   font-family: PressStart;
-  src: url(app/assets/fonts/PressStart2P-Regular.ttf) format("truetype");
+  src: url(assets/fonts/PressStart2P-Regular.ttf) format("truetype");
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { afterNextRender, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-gameplay',
@@ -134,4 +135,5 @@ export class GameplayComponent {
     this.coordenadaBot = '';
     this.mensagemPlayer = '';
   }
+
 }
