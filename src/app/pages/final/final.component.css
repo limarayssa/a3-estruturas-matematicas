@@ -1,0 +1,44 @@
+.imagem {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+}
+
+.botoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* css dos botoes */
+.title {
+  background: #2e2e2e;
+  padding: 15px;
+  color: #fff;
+  margin-bottom: 30px;
+  font-family: PressStart;
+  font-size: 24px;
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black,
+    0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038,
+    inset 0px 5px #ffffff1f, inset 0px -5px #00000030;
+}
+button {
+  color: #fff;
+  background-color: #6abc3a;
+  padding: 15px 40px 15px 40px;
+  margin: 10px;
+  font-size: 14px;
+  font-family: PressStart;
+  border: 0;
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black,
+    0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038,
+    inset 0px 5px #ffffff36;
+  cursor: pointer;
+}
+button:active {
+  transform: translateY(5px);
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black,
+    inset 0px 5px #00000038;
+}

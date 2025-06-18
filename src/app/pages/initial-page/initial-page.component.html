@@ -1,10 +1,23 @@
 <html>
   <main class="options">
-    <ul>
-      <li (click)="iniciar()">Iniciar jogo</li>
-      <li>Instruções</li>
-      <li>Sobre nós</li>
-    </ul>
+     <ul>
+    <li (click)="iniciar()">Iniciar jogo</li>
+
+    <li (click)="toggleInstrucoes()">
+      Instruções
+      <div *ngIf="mostrarInstrucoes" class="abaixa">
+        <p>Na tela a seguir, selecione seus navios</p>
+        <p>Depois, digite a cordenada contra o bot</p>
+        <p>Acaba quando você ou o bot chegarem a 10 pontos</p>
+      </div>
+    </li>
+
+    <li (click)="toggleSobreNos()">
+      Sobre nós
+      <div *ngIf="mostrarSobreNos" class="abaixa">
+        <p>Apenas coisas leves.</p>
+      </div>
+    </li>
+  </ul>
   </main>
-  <footer class="footer"></footer>
 </html>

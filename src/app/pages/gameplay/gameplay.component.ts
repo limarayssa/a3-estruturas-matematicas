@@ -49,7 +49,6 @@ export class GameplayComponent {
 
   //gera a matriz do computador
   gerarComputador() {
-    debugger;
     if (this.navioPC.length < 10) {
       const maxNavios = 10;
       let i = 0;
@@ -62,7 +61,7 @@ export class GameplayComponent {
         }
       }
       console.log('nao grita');
-      console.log(this.tabuleiroMaquina);
+      console.log(this.navioPC);
     }
   }
 
