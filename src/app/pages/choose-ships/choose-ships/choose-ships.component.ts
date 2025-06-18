@@ -29,7 +29,7 @@ export class ChooseShipsComponent {
       this.tabuleiro[x][y] = '';
     } else {
       if (this.navio.length < this.maxNavios) {
-        // Selecionar
+        //selecionar
         this.navio.push(posicao);
         this.tabuleiro[x][y] = 'navio';
         console.log(this.tabuleiro)

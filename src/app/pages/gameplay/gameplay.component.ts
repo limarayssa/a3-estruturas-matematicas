@@ -49,7 +49,6 @@ export class GameplayComponent {
 
   //gera a matriz do computador
   gerarComputador() {
-    if (this.navioPC.length < 10) {
       const maxNavios = 10;
       let i = 0;
       while (i < maxNavios) {
@@ -58,7 +57,6 @@ export class GameplayComponent {
         if (this.tabuleiroMaquina[this.x][this.y] !== 'navio') {
           this.guardaPosicao();
           i++;
-        }
       }
       console.log('nao grita');
       console.log(this.navioPC);
